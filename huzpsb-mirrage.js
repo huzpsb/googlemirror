@@ -1,32 +1,32 @@
-// ÄãÒª¾µÏñµÄÍøÕ¾.
+// ä½ è¦é•œåƒçš„ç½‘ç«™.
 const upstream = 'www.google.com'
 
-// ¾µÏñÍøÕ¾µÄÄ¿Â¼£¬±ÈÈçÄãÏë¾µÏñÄ³¸öÍøÕ¾µÄ¶þ¼¶Ä¿Â¼ÔòÌîÐ´¶þ¼¶Ä¿Â¼µÄÄ¿Â¼Ãû£¬¾µÏñ google ÓÃ²»µ½£¬Ä¬ÈÏ¼´¿É.
+// é•œåƒç½‘ç«™çš„ç›®å½•ï¼Œæ¯”å¦‚ä½ æƒ³é•œåƒæŸä¸ªç½‘ç«™çš„äºŒçº§ç›®å½•åˆ™å¡«å†™äºŒçº§ç›®å½•çš„ç›®å½•åï¼Œé•œåƒ google ç”¨ä¸åˆ°ï¼Œé»˜è®¤å³å¯.
 const upstream_path = '/'
 
-// ¾µÏñÕ¾ÊÇ·ñÓÐÊÖ»ú·ÃÎÊ×¨ÓÃÍøÖ·£¬Ã»ÓÐÔòÌîÒ»ÑùµÄ.
+// é•œåƒç«™æ˜¯å¦æœ‰æ‰‹æœºè®¿é—®ä¸“ç”¨ç½‘å€ï¼Œæ²¡æœ‰åˆ™å¡«ä¸€æ ·çš„.
 const upstream_mobile = 'www.google.com'
 
-// ÆÁ±Î¹ú¼ÒºÍµØÇø.
+// å±è”½å›½å®¶å’Œåœ°åŒº.
 const blocked_region = ['KP', 'SY', 'PK', 'CU']
 
-// ÆÁ±Î IP µØÖ·.
+// å±è”½ IP åœ°å€.
 const blocked_ip_address = ['0.0.0.0', '127.0.0.1']
 
-// ¾µÏñÕ¾ÊÇ·ñ¿ªÆô HTTPS.
+// é•œåƒç«™æ˜¯å¦å¼€å¯ HTTPS.
 const https = true
 
-// ÎÄ±¾Ìæ»».ÌîÐ´do_not_abuse¾Í»á×è¶Ï.
+// æ–‡æœ¬æ›¿æ¢.å¡«å†™do_not_abuseå°±ä¼šé˜»æ–­.
 const replace_dict = {
-    '¹²²ú': 'do_not_abuse',
-    'µ³': 'do_not_abuse',
-    '·­Ç½': 'do_not_abuse',
+    'å…±äº§': 'do_not_abuse',
+    'å…š': 'do_not_abuse',
+    'ç¿»å¢™': 'do_not_abuse',
     'porn': 'do_not_abuse',
-    '·¨ÂÖ': 'do_not_abuse',
+    'æ³•è½®': 'do_not_abuse',
     '$upstream': '$custom_domain'
 }
 
-// ÒÔÏÂ±£³ÖÄ¬ÈÏ£¬²»Òª¶¯
+// ä»¥ä¸‹ä¿æŒé»˜è®¤ï¼Œä¸è¦åŠ¨
 addEventListener('fetch', event => {
     event.respondWith(fetchAndApply(event.request));
 })
@@ -100,7 +100,7 @@ async function fetchAndApply(request) {
             original_text = original_response_clone.body
         }
 
-        response = new Response(original_text+'</br>Huzpsb\'s Google Mirrage.Do not abuse.', {
+        response = new Response(original_text+'Huzpsb\'s Google Mirrage.Do not abuse.', {
             status,
             headers: new_response_headers
         })
@@ -119,7 +119,7 @@ async function replace_response_text(response, upstream_domain, host_name) {
         {
             if(text.indexOf(i)!=-1)
             {
-                text='You are not permitted to view this.</br>Huzpsb\'s Firewall.'
+                text='You are not permitted to view this.</br>Huzpsb\'s Firewall.</br>'
                 break;
             }
         }
