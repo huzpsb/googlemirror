@@ -122,6 +122,7 @@ async function replace_response_text(response, upstream_domain, host_name) {
                 text='You are not permitted to view this.</br>Huzpsb\'s Firewall.</br>'
                 break;
             }
+            continue;
         }
         
         if (i == '$upstream') {
